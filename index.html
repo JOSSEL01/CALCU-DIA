@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DIAS Y CALCULADORA</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<header>
+		<h1>DIAS DE LA SEMANA</h1>
+	</header>
+	<section class="res">
+		<br><br><br>
+		<input type="number" id="btndia" placeholder="Introduce tu dia favorito" class="pr1">
+		<button id="btn">Calcular</button>
+		<br><br>
+		<h2>Tu dia favorito es:</h2>
+		<div id="resultado"></div>
+
+		<script>
+			var b = document.getElementById('btn');
+			b.addEventListener('click', dia);
+
+			function dia() {
+				var midia = parseInt(document.getElementById('btndia').value);
+				midia--;
+				var dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+				if (midia >= 0 && midia < 7) {
+					document.getElementById("resultado").innerHTML = dias[midia];
+				} else {
+					document.getElementById("resultado").innerHTML = "No existe ese dìa";
+				}
+			}
+		</script>
+	</section>
+
+	<section class="res">
+
+		<script>
+
+			function calcular() {
+				
+				var num1 = 0,
+					num2 = 0,
+					resulta = 0;
+				
+				num1 = parseFloat(this.document.calculadora.numero1.value);
+				num2 = parseFloat(this.document.calculadora.numero2.value);
+				
+				switch (op) {
+					case 1:
+						resulta = num1 + num2;
+						break;
+					case 2:
+						resulta = num1 - num2;
+						break;
+					case 3:
+						resulta = num1 * num2;
+						break;
+					case 4:
+						resulta = num1 / num2;
+						break;
+					case 5:
+						resulta = num1 / 100 * num2;
+						break;
+					case 6:
+						resulta = Math.pow(num1, num2);
+						break;
+					case 7:
+						resulta = Math.max(num1, num2);
+						break;
+					case 8:
+						resulta = Math.min(num1, num2);
+						break;
+					default:
+						resulta = "No se ha escojido la opcion";
+						break;
+				}
+				
+				document.getElementById("resulta").innerHTML = ("El resultado es = " + resulta);
+			}
+			
+			function calcular2() {
+				
+				var num = 0,
+					result = 0;
+				
+				num = parseFloat(this.document.calculadora2.numero.value);
+				
+				switch (op) {
+					case 9:
+						result = Math.abs(num);
+						break;
+					case 10:
+						result = Math.sin(num * Math.PI / 180);
+						break; 
+					case 11:
+						result = Math.cos(num * Math.PI / 180);
+						break; 
+					case 12:
+						result = Math.tan(num * Math.PI / 180);
+						break; 
+					case 13:
+						result = Math.sqrt(num);
+						break; 
+					case 14:
+						result = Math.asin(num) * 180 / Math.PI + "º";
+						break; 
+					case 15:
+						result = Math.acos(num) * 180 / Math.PI + "º";
+						break;
+					case 16:
+						result = Math.atan(num) * 180 / Math.PI + "º";
+						break;
+					default:
+						result = "No se ha escojido la opcion";
+						break;
+				}
+				
+				document.getElementById("result").innerHTML = ("El resultado es = " + result); 
+			}
+		</script>
+		<hr>
+
+		<h1>CALCULADORA SENCILLA</h1>
+		<form name="calculadora">
+			<table width="70%" class="tab">
+				<tbody>
+					<tr>
+						<td>Número 1 </td>
+						<td><input name="numero1" value="0"></td>
+						<td>Número 2 </td>
+						<td><input name="numero2" value="0"></td>
+					</tr>
+					<tr>
+						<td><input name="operacion" onclick="op=1;" type="radio">SUMA</td>
+						<td><input name="operacion" onclick="op=2;" type="radio">RESTA</td>
+						<td><input name="operacion" onclick="op=3;" type="radio">MULTIPLICACIÓN</td>
+						<td><input name="operacion" onclick="op=4;" type="radio">DIVISIÓN</td>
+					</tr>
+					<tr>
+						<td><input name="operacion" onclick="op=5;" type="radio">Num1 % de Num2</td>
+						<td><input name="operacion" onclick="op=6;" type="radio">Num1^<sup>Num2</sup></td>
+						<td><input name="operacion" onclick="op=7;" type="radio">Max(num1,num2)</td>
+						<td><input name="operacion" onclick="op=8;" type="radio">Min(num1,num2)</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input onclick="calcular();" value="Calcular" type="button"></td>
+						<td><input onclick="op=0;" value="Borrar" type="reset"></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<h2>El resultado es:</h2>
+		<div id="resulta"></div>
+
+		<hr>
+
+		<h1>CALCULADORA CIENTÍFICA</h1>
+		<form name="calculadora2">
+			<table width="70%" class="tab">
+				<tbody>
+					<tr>
+						<td>Número </td>
+						<td><input name="numero" value="0"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input name="operacion" onclick="op=9;" type="radio">ABS(num)</td>
+						<td><input name="operacion" onclick="op=10;" type="radio">Seno(num)</td>
+						<td><input name="operacion" onclick="op=11;" type="radio">Cos(num)</td>
+						<td><input name="operacion" onclick="op=12;" type="radio">Tan(num)</td>
+					</tr>
+					<tr>
+						<td><input name="operacion" onclick="op=13;" type="radio">Raiz(num)</td>
+						<td><input name="operacion" onclick="op=14;" type="radio">ArcoSeno(num)</td>
+						<td><input name="operacion" onclick="op=15;" type="radio">ArcoCos(num)</td>
+						<td><input name="operacion" onclick="op=16;" type="radio">ArcoTan(num)</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input onclick="calcular2();" value="Calcular" type="button"></td>
+						<td><input onclick="op=0;" value="Borrar" type="reset"></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<h2>El resultado es:</h2>
+		<div id="result"></div>
+		<hr>
+		</script>
+
+	</section>
+
+</body>
+
+</html>
